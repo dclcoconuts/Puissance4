@@ -1,0 +1,16 @@
+h1{
+    text-align: center;
+    color: blue;
+}
+
+#grille{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+}
+
+#grille img{
+    width: 60px;
+    height: 60px;
+}
