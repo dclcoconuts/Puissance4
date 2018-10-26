@@ -1,10 +1,31 @@
+body{
+    background-image: linear-gradient(rgb(100, 100, 248),rgb(179, 179, 219));
+    
+}
+
 h1{
     text-align: center;
-    color: blue;
+    color: rgb(10, 10, 129);
+    text-transform: uppercase;
+}
+
+#joueur1{}
+
+#choixColonne {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 10px 25px;
+}
+#choixColonne img{
+    width: 50px;
+    height: 50px;
+    opacity: 0.5;
 }
 
 #grille{
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
 
@@ -13,4 +34,10 @@ h1{
 #grille img{
     width: 60px;
     height: 60px;
+}
+#grille div{
+    /* background-image: url(); */
+    background-size: 50px;
+    background-position: center;
+
 }
