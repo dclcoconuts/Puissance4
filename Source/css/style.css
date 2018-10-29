@@ -68,13 +68,10 @@ h1{
     justify-content: center;
 
 }
-/* taille des cases de la grille */
+/* taille des cases de la grille  + taille et position du jeton  */
 #grille img{
     width: 60px;
     height: 60px;
-}
-/* taille et position du jeton au niveau des cases de la grille */
-#grille div{
     background-size: 50px;
     background-position: center;
 
