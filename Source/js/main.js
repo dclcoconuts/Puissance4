@@ -45,9 +45,9 @@ for (var i=0; i<7; i++){
 }
 
 // vérification du contenu du tableau
-for (var i = 0; i < grille.length; i++){
-    console.log(grille[i]);
-}
+// for (var i = 0; i < grille.length; i++){
+//     console.log(grille[i]);
+// }
 
 
 
@@ -77,6 +77,7 @@ var choixCol = document.getElementById("choixColonne");
 function randomJoueur() {
     joueurEnCours = Math.floor(Math.random() * 2) + 1;
     console.log("Random Joueur ",joueurEnCours);
+    tourDuJoueur();
     return joueurEnCours;
 }
 
@@ -86,7 +87,7 @@ function tourDuJoueur() {
     var i;
     if (joueurEnCours == 1) {
         urlLogo = urlLogo1;
-        urlJeton = urlJeton1;
+        // urlJeton = urlJeton1;
         // changement d'image sur choixColonne
         for (i=0; i <= 6; i++)
         {
@@ -97,7 +98,7 @@ function tourDuJoueur() {
         document.getElementById("logo1").src = urlLogo;
      } else {
         urlLogo = urlLogo2;
-        urlJeton = urlJeton2;
+        // urlJeton = urlJeton2;
         // changement d'image sur choixColonne
         for (i=0; i <= 6; i++)
         {
@@ -117,7 +118,9 @@ function changementJoueur (){
     } else { 
         joueurEnCours = 1;
     };
+    tourDuJoueur();
     return joueurEnCours;
+    
 }
 
 
@@ -144,9 +147,14 @@ function retraitJeton (idPrevCase) {
 };
 
 
-fonction déplacement vertical du jeton
-function move() {
-   
+// fonction déplacement vertical du jeton
+function move() { 
+    if (joueurEnCours == 1) {
+        urlJeton = urlJeton1;
+    } else {
+        urlJeton = urlJeton2;
+    }
+
     var x = setInterval(coord, 50);
     function coord (){
         if (coordX == coordXF){
@@ -160,7 +168,8 @@ function move() {
             jetonCase(urlJeton, idCase); 
         }
     }
-
+    changementJoueur();                 
+    
 }
 
 // récupération de la coordonnée Y
@@ -168,13 +177,11 @@ choixCol.addEventListener("click", function(event){
     var colChoisie =event.target.id;    //enregistre l'id de la cellule cliquee sous forme de string.
     coordY = parseInt(colChoisie[1]);   // recupere le deuxième caractère de l' ID = chiffre
     rechXFin();                         // récupération de la coordonnee X finale  
-    coordX = -1;
-    move();
+    coordX = -1;                        // coordonnée de départ du jeton
+    move() ;                         // chute du jeton
+                               
 
-    changementJoueur();
-    tourDuJoueur();
-
-    console.log(grille)
+    console.log(grille);
 
 }); 
 
