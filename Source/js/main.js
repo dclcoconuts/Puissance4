@@ -55,11 +55,16 @@ var urlJeton;
 var urlLogo1 = "img/Avatar_Coconuts_mini.png";  
 var urlLogo2 = "img/Avatar_Licorne_mini.png"; 
 var urlLogo;
+// variable pour affichage score
 var score1 = document.getElementById("score1");
 var score2 = document.getElementById("score2");
 // variable pour rejouer et reset
 var scoreJoueur1 = 0;
 var scoreJoueur2 = 0;
+// variable pour fin partie
+var partie = true;
+// variable pour affichage image victoire
+var modal = document.getElementById("joueurs");
 
 
 
@@ -201,16 +206,17 @@ function move() {
 
 // action au clic
 choixCol.addEventListener("click", function(event){
-    // récupération de la coordonnee Y
-    var colChoisie =event.target.id;    //enregistre l'id de la cellule cliquee sous forme de string.
-    coordY = parseInt(colChoisie[1]);   // recupere le deuxième caractère de l' ID = chiffre
-    rechXFin();                         // récupération de la coordonnee X finale  
-    coordX = -1;                        // coordonnée de départ du jeton
-    move() ;                         // chute du jeton
-    changementJoueur();                         
-    tourDuJoueur();
-    console.log(grille);
-
+    if (partie == true) {                   
+        // récupération de la coordonnee Y
+        var colChoisie =event.target.id;    //enregistre l'id de la cellule cliquee sous forme de string.
+        coordY = parseInt(colChoisie[1]);   // recupere le deuxième caractère de l' ID = chiffre
+        rechXFin();                         // récupération de la coordonnee X finale  
+        coordX = -1;                        // coordonnée de départ du jeton
+        move() ;                            // chute du jeton
+        changementJoueur();                         
+        tourDuJoueur();
+        console.log(grille);
+    }
 }); 
 
 
@@ -312,6 +318,8 @@ function verif (){
         
         console.log ( joueurEnCours + " a gagné");
         incremScore();
+        partie = false;      //   fin de la partie
+        modal.innerHTML
     };
 
 
