@@ -64,8 +64,8 @@ var scoreJoueur2 = 0;
 // variable pour fin partie
 var partie = true;
 // variable pour affichage image victoire
-var modal = document.getElementById("joueurs");
-
+var modal = document.getElementById("modalVictoire");
+var modalLogo = document.getElementById("logo");
 
 
 function creationGrille() {
@@ -319,7 +319,9 @@ function verif (){
         console.log ( joueurEnCours + " a gagné");
         incremScore();
         partie = false;      //   fin de la partie
-        modal.innerHTML
+        modal.style.display = "block";
+        modalLogo.src = urlLogo;
+        changementJoueur();
     };
 
 
@@ -352,7 +354,8 @@ rejouer.addEventListener("click", function(){
     creationGrille();
     changementJoueur();   
     tourDuJoueur();
-
+    modal.style.display = "none";
+    partie = true;
 }); 
 
 // traitement du bouton reset
@@ -362,6 +365,8 @@ reset.addEventListener("click", function(){
     creationGrille();
     randomJoueur();
     tourDuJoueur();
+    modal.style.display = "none";
+    partie = true;
 }); 
 
 // fonction remise des scores à zéro apres reset
